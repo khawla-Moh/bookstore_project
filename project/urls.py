@@ -18,11 +18,23 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from inventory.api import BooklistAPI,BookDetailAPI,CategorylistAPI,CategoryDetailAPI,AuthorlistAPI,AuthorDetailAPI
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
 
+
+    #===============API URLS=================
+    path('inventory/api',BooklistAPI.as_view()),
+    path('inventory/api/<int:pk>',BookDetailAPI.as_view()),
+
+    path('inventory/category/api',CategorylistAPI.as_view()),
+    path('inventory/category/api/<int:pk>',CategoryDetailAPI.as_view()),
+
+
+    path('inventory/author/api',AuthorlistAPI.as_view()),
+    path('inventory/author/api/<int:pk>',AuthorDetailAPI.as_view()),
 ]
 
 
