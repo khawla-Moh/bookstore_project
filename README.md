@@ -9,4 +9,14 @@ RESTful API using Python and Django to manage a bookstore's inventory, and API s
             Pagination: Implement pagination for the book list.
           5-Relationship Management: Manage the many-to-many relationship between books and categories.  
 
+Endpoints:
+● Create endpoints to:
+● List all books
+● Add a new book
+● Retrieve, update, and delete a specific book
+● List all authors and categories
+
+
+          
+
 
