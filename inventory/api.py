@@ -51,5 +51,8 @@ class BookDetailAPI(generics.RetrieveAPIView):
 class BookCreateAPI(generics.CreateAPIView):
     queryset=Book.objects.all()
     serializer_class=serializers.BookSerializers
-
+#======================Retrive Book===============
+class BooKUpdateAPI(generics.UpdateAPIView):
+    queryset=Book.objects.all()
+    serializer_class=serializers.BookDetailSerializers
 
