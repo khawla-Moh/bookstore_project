@@ -56,3 +56,8 @@ class BooKUpdateAPI(generics.UpdateAPIView):
     queryset=Book.objects.all()
     serializer_class=serializers.BookDetailSerializers
 
+#==============Delete Book======================
+class BooKDeleteAPI(generics.DestroyAPIView):
+    queryset=Book.objects.all()
+    serializer_class=serializers.BookDetailSerializers   
+
