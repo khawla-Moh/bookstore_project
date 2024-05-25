@@ -1,7 +1,9 @@
-from rest_framework import generics
+from rest_framework import generics,filters
 
 from .models import Book,Category,Author
 from .import serializers
+from django_filters.rest_framework import DjangoFilterBackend
+
 
 
 
@@ -21,11 +23,11 @@ class CategoryDetailAPI(generics.RetrieveAPIView):
 
 #=======================Author================
 class AuthorlistAPI(generics.ListAPIView):
-    queryset=Category.objects.all()
+    queryset=Author.objects.all()
     serializer_class=serializers.AuthorListSerializers
 
 class AuthorDetailAPI(generics.RetrieveAPIView):
-    queryset=Category.objects.all()
+    queryset=Author.objects.all()
     serializer_class=serializers.AuthorDetailSerializers       
 
 
@@ -42,7 +44,12 @@ class AuthorDetailAPI(generics.RetrieveAPIView):
 class BooklistAPI(generics.ListAPIView):
     queryset=Book.objects.all()
     serializer_class=serializers.BookListSerializers
+    filter_backends =[DjangoFilterBackend,filters.OrderingFilter]
+    filterset_fields =['price','stock','author','categories']
+    ordering_fields = ['title','price','stock']
 
+
+#=============================================
 class BookDetailAPI(generics.RetrieveAPIView):
     queryset=Book.objects.all()
     serializer_class=serializers.BookListSerializers
