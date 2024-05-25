@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-from inventory.api import BooklistAPI,BookDetailAPI,CategorylistAPI,CategoryDetailAPI,AuthorlistAPI,AuthorDetailAPI
+from inventory.api import BooklistAPI,BookDetailAPI,CategorylistAPI,CategoryDetailAPI,AuthorlistAPI,AuthorDetailAPI,BookCreateAPI
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +28,7 @@ urlpatterns = [
     #===============API URLS=================
     path('inventory/api',BooklistAPI.as_view()),
     path('inventory/api/<int:pk>',BookDetailAPI.as_view()),
+    path('inventory/api/create',BookCreateAPI.as_view()),
 
     path('inventory/category/api',CategorylistAPI.as_view()),
     path('inventory/category/api/<int:pk>',CategoryDetailAPI.as_view()),

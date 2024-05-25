@@ -3,15 +3,12 @@ from rest_framework import generics
 from .models import Book,Category,Author
 from .import serializers
 
-#==================Book=========================
-class BooklistAPI(generics.ListAPIView):
-    queryset=Book.objects.all()
-    serializer_class=serializers.BookListSerializers
 
-class BookDetailAPI(generics.RetrieveAPIView):
-    queryset=Book.objects.all()
-    serializer_class=serializers.BookListSerializers
-    
+
+
+
+
+
 #==================Category=====================
 class CategorylistAPI(generics.ListAPIView):
     queryset=Category.objects.all()
@@ -30,3 +27,29 @@ class AuthorlistAPI(generics.ListAPIView):
 class AuthorDetailAPI(generics.RetrieveAPIView):
     queryset=Category.objects.all()
     serializer_class=serializers.AuthorDetailSerializers       
+
+
+
+
+
+
+
+
+
+
+
+#==================Book=========================
+class BooklistAPI(generics.ListAPIView):
+    queryset=Book.objects.all()
+    serializer_class=serializers.BookListSerializers
+
+class BookDetailAPI(generics.RetrieveAPIView):
+    queryset=Book.objects.all()
+    serializer_class=serializers.BookListSerializers
+
+#======================ADD BOOK(CREATE)=============
+class BookCreateAPI(generics.CreateAPIView):
+    queryset=Book.objects.all()
+    serializer_class=serializers.BookSerializers
+
+
