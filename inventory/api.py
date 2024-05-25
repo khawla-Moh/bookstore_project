@@ -1,5 +1,5 @@
 from rest_framework import generics,filters
-
+from rest_framework.pagination import PageNumberPagination
 from .models import Book,Category,Author
 from .import serializers
 from django_filters.rest_framework import DjangoFilterBackend
@@ -45,10 +45,17 @@ class BooklistAPI(generics.ListAPIView):
     queryset=Book.objects.all()
     serializer_class=serializers.BookListSerializers
     filter_backends =[DjangoFilterBackend,filters.OrderingFilter]
-    filterset_fields =['price','stock','author','categories']
-    ordering_fields = ['title','price','stock']
-
-
+    filterset_fields ={
+        
+        'price': ["in", "exact"], # note the 'in' field
+        'categories': ["exact"],
+        'author': ["exact"],
+        
+        'stock':["exact"],
+    }
+    ordering_fields = ['title','price','stock']  
+    pagination_class=PageNumberPagination
+   
 #=============================================
 class BookDetailAPI(generics.RetrieveAPIView):
     queryset=Book.objects.all()
