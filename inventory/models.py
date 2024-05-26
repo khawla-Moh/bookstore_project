@@ -16,9 +16,8 @@ class Book(models.Model):
     tags=TaggableManager()
     stock = models.PositiveIntegerField(default=0)
     description=models.TextField(max_length=700)
-    #stock=models.
+    
     author=models.ForeignKey('Author',related_name='book_auhtor',on_delete=models.CASCADE)
-    #author=models.ManyToManyField('Author')
     categories=models.ManyToManyField('Category')
     slug=models.SlugField(blank=True,null=True,unique=True)
     
@@ -26,10 +25,7 @@ class Book(models.Model):
     def Categories(self):
         return ','.join([c.name for c in self.categories.all()] )
     
-    """   def Authors(self):
-        return ','.join([a.name for a in self.author.all()] )
-    """
-
+    
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Book, self).save(*args, **kwargs)
