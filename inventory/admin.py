@@ -5,8 +5,12 @@ from .models import Book,Category,Author
 
 
 class BookAdmin(admin.ModelAdmin):
-    list_display=['title','Categories','author','price']
-    list_filter=['title','author','price']
+    list_display=['title','Categories'
+                  ,'author','price']
+    
+    
+    list_filter=['title','author'
+                 ,'price']
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display=['name']

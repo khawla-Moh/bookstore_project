@@ -30,7 +30,6 @@ class AuthorDetailSerializers(serializers.ModelSerializer):
 
 #=========================BOOK=======================
 class BookListSerializers(serializers.ModelSerializer):
-    #author=serializers.StringRelatedField(many=True)
     author=AuthorListSerializers()
     author=author.fields['name']
     categories=serializers.StringRelatedField(many=True)
@@ -46,16 +45,6 @@ class BookDetailSerializers(serializers.ModelSerializer):
 
 #====create====
 class BookSerializers(serializers.ModelSerializer):
-    #author=serializers.StringRelatedField(many=True)
-    """ 
-    author=AuthorListSerializers()
-    author=author.fields['name']
-    categories=serializers.StringRelatedField(many=True)
-    
-    class Meta:
-        model=Book
-        fields=['title','author','categories','price','image','publisher_year','update_date','stock','description']
-    """
     
     categories = serializers.SlugRelatedField(
         many=True, 
@@ -64,7 +53,11 @@ class BookSerializers(serializers.ModelSerializer):
     )
     class Meta:
         model = Book
-        fields = ['id', 'title', 'categories','publisher_year','update_date','author','description', 'price', 'stock']
+        fields = ['id', 
+                  'title ', 'categories',
+                  'publisher_year','author',
+                  'update_date','price', 
+                  'description', 'stock']
 
 
 
